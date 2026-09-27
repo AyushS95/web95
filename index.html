@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ayush Saha // Software Engineer & Speed Enthusiast</title>
+  
+  <!-- Favicon / Meta -->
+  <meta name="description" content="Portfolio of Ayush Saha - 2nd Year CSE B.Tech at Techno India University. Passionate about Supercars, Hot Wheels, Game Dev, Three.js, and High Performance Computing.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏎️</text></svg>">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="./css/liquid-glass.css">
+  <link rel="stylesheet" href="./css/style.css">
+
+  <!-- Preload Core Libraries -->
+  <script src="./js/libs/lucide.min.js"></script>
+  <script src="./js/libs/gsap.min.js"></script>
+  <script src="./js/libs/ScrollTrigger.min.js"></script>
+
+  <!-- ES Module Import Map for Three.js -->
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "./js/libs/three.module.js",
+      "three/addons/": "./js/libs/"
+    }
+  }
+  </script>
+</head>
+<body>
+
+  <!-- Top Scroll Progress Bar -->
+  <div id="scroll-progress-bar"></div>
+
+  <!-- Ambient Liquid Glass Gradient Blobs in Background -->
+  <div class="liquid-blob blob-orange"></div>
+  <div class="liquid-blob blob-cyan"></div>
+  <div class="liquid-blob blob-magenta"></div>
+
+  <!-- WebGL 3D Supercar & Revolving Dynamic Scene Container -->
+  <div id="webgl-canvas-container"></div>
+
+  <!-- Floating Liquid Glass Navbar -->
+  <header class="navbar-wrapper">
+    <nav class="navbar liquid-glass-border">
+      <a href="#hero" class="nav-brand">
+        <span>AYUSH SAHA</span>
+        <span class="brand-badge">CSE '28</span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#hero" class="nav-link active">Start</a></li>
+        <li><a href="#about" class="nav-link">The Pilot</a></li>
+        <li><a href="#garage" class="nav-link">3D Garage</a></li>
+        <li><a href="#projects" class="nav-link">Creations</a></li>
+        <li><a href="#skills" class="nav-link">Arsenal</a></li>
+        <li><a href="#contact" class="nav-link">Pit Stop</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <!-- Interactive Sound Engine Toggle -->
+        <button id="global-sound-btn" class="sound-btn" title="Toggle Supercar Engine & Ambient Sound">
+          <div class="sound-bars">
+            <span class="sound-bar"></span>
+            <span class="sound-bar"></span>
+            <span class="sound-bar"></span>
+          </div>
+          <span class="sound-label">AUDIO: OFF</span>
+        </button>
+
+        <!-- Hot Wheels Easter Egg Shortcut -->
+        <button id="hw-easter-egg-btn" class="liquid-pill" style="padding: 6px 14px; font-size: 0.8rem; background: linear-gradient(135deg, rgba(255,69,0,0.3), rgba(255,183,3,0.3)); border-color: rgba(255,183,3,0.5);">
+          🔥 HOT WHEELS
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Main Scrollable Content Layer -->
+  <main class="content-wrapper">
+
+    <!-- 1. HERO SECTION -->
+    <section id="hero">
+      <div class="hero-content">
+        <div class="hero-tag interactive-target">
+          <span class="pulse-dot"></span>
+          <span>TECHNO INDIA UNIVERSITY // CSE 2ND YEAR</span>
+        </div>
+
+        <h1 class="hero-title">
+          <span class="glass-heading">ARCHITECTING CODE.</span>
+          <span class="glass-heading-hw">FUELED BY VELOCITY.</span>
+        </h1>
+
+        <p class="hero-desc">
+          I'm <strong>Ayush Saha</strong>, a 2nd-year Computer Science & Engineering undergraduate at Techno India University. 
+          Obsessed with real-time 3D graphics, high-octane racecars, Hot Wheels hyper-concepts, video game physics, and synthwave soundscapes.
+        </p>
+
+        <div class="hero-buttons interactive-target">
+          <a href="#garage" class="btn-primary">
+            <span>ENTER 3D GARAGE</span>
+          </a>
+          <a href="#projects" class="btn-secondary">
+            <span>VIEW CREATIONS</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. ABOUT SECTION ("THE PILOT") -->
+    <section id="about">
+      <div class="section-header">
+        <span class="section-label">TELEMETRY & IDENTITY</span>
+        <h2 class="section-title glass-heading">MEET THE PILOT</h2>
+      </div>
+
+      <div class="about-grid">
+        <div class="about-card liquid-glass liquid-glass-border interactive-target">
+          <p class="about-lead">
+            Bridging high-performance software engineering with the relentless adrenaline of motorsport and gaming.
+          </p>
+
+          <p class="about-text">
+            Currently pursuing my B.Tech in Computer Science and Engineering (2024–2028) at <strong>Techno India University</strong>, 
+            I spend my days mastering data structures, computer graphics, WebGL/Three.js shaders, and interactive system architectures. 
+            When I'm not writing clean code, you'll find me analyzing F1 telemetry curves, building extreme Hot Wheels tracks, or composing retro-futuristic synth beats.
+          </p>
+
+          <div class="interests-grid">
+            <div class="interest-item">
+              <span class="interest-icon">🏎️</span>
+              <div class="interest-title">Racecars & Aero</div>
+              <div class="interest-desc">Aerodynamic downforce, high-revving V8s/V10s, telemetry curves, and GT3/F1 dynamics.</div>
+            </div>
+
+            <div class="interest-item">
+              <span class="interest-icon">🔥</span>
+              <div class="interest-title">Hot Wheels Collector</div>
+              <div class="interest-desc">Die-cast culture, radical Spectraflame candy paint, Twin Mill blowers, and gravity-defying loops.</div>
+            </div>
+
+            <div class="interest-item">
+              <span class="interest-icon">🎮</span>
+              <div class="interest-title">Video Games & Dev</div>
+              <div class="interest-desc">Sim racing physics engines, Cyberpunk 2077 world design, WebGL rendering, and low-latency logic.</div>
+            </div>
+
+            <div class="interest-item">
+              <span class="interest-icon">🎧</span>
+              <div class="interest-title">Music & Audio</div>
+              <div class="interest-desc">Synthwave basslines, phonk energy, electronic music production, and Web Audio API synthesis.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="about-stats-card interactive-target">
+          <div class="stat-box liquid-glass">
+            <span class="stat-num" style="color: var(--hw-orange);">2ND YEAR</span>
+            <span class="stat-label">B.Tech in CSE @ Techno India University</span>
+          </div>
+
+          <div class="stat-box liquid-glass">
+            <span class="stat-num" style="color: var(--cyber-cyan);">60+ FPS</span>
+            <span class="stat-label">Hardware-Accelerated 3D WebGL Pipelines</span>
+          </div>
+
+          <div class="stat-box liquid-glass">
+            <span class="stat-num" style="color: var(--hw-gold);">100+ CARS</span>
+            <span class="stat-label">Hot Wheels & Die-cast Model Collection</span>
+          </div>
+
+          <div class="stat-box liquid-glass">
+            <span class="stat-num" style="color: var(--neon-pink);">10,000 RPM</span>
+            <span class="stat-label">Relentless Passion for Speed & Innovation</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. GARAGE / SUPERCAR SHOWCASE SECTION -->
+    <section id="garage" class="garage-section">
+      <div class="section-header" style="text-align: center; margin-bottom: 24px;">
+        <span class="section-label">INTERACTIVE 3D TUNING STUDIO</span>
+        <h2 class="section-title glass-heading">THE HYPERCAR GARAGE</h2>
+        <p style="color: #94a3b8; font-size: 0.95rem; margin-top: 8px;">
+          Rotate, inspect HDR reflections, toggle LED headlights, customize paint & underglow, and rev the engine!
+        </p>
+      </div>
+
+      <div class="garage-hud">
+        <!-- Top Bar: Active Car Details & Next/Prev Controls -->
+        <div class="garage-top-bar liquid-glass liquid-glass-border interactive-target">
+          <div class="car-title-box">
+            <h3 id="garage-car-name">Apex Italia 458</h3>
+            <p id="garage-car-type">HYPERCAR SPEC // PBR REALTIME REFLECTIONS</p>
+          </div>
+
+          <div class="car-nav-btns">
+            <button id="car-prev-btn" class="nav-arrow-btn" title="Previous Car">
+              <i data-lucide="chevron-left"></i>
+            </button>
+            <button id="car-next-btn" class="nav-arrow-btn" title="Next Car">
+              <i data-lucide="chevron-right"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Tuning Controls Panel -->
+        <div class="garage-controls-panel liquid-glass interactive-target">
+          <!-- Paint Swatches -->
+          <div class="control-group">
+            <span class="control-group-title">EXTERIOR CANDY PAINT</span>
+            <div class="color-swatches">
+              <button class="color-swatch active" data-color="#ff3b00" style="background: #ff3b00;" title="Hot Wheels Spectraflame Orange"></button>
+              <button class="color-swatch" data-color="#00f0ff" style="background: #00f0ff;" title="Cyber Cyan"></button>
+              <button class="color-swatch" data-color="#e0e0e0" style="background: #e0e0e0;" title="Liquid Silver Chrome"></button>
+              <button class="color-swatch" data-color="#141416" style="background: #141416;" title="Midnight Carbon"></button>
+              <button class="color-swatch" data-color="#ff0055" style="background: #ff0055;" title="Rosso Corsa Red"></button>
+              <button class="color-swatch" data-color="#9900ff" style="background: #9900ff;" title="Amethyst Violet"></button>
+              <button class="color-swatch" data-color="#00ff66" style="background: #00ff66;" title="Acid Lime Toxic"></button>
+            </div>
+          </div>
+
+          <!-- Finish Modes -->
+          <div class="control-group">
+            <span class="control-group-title">CLEARCOAT FINISH</span>
+            <div class="finish-buttons">
+              <button class="toggle-chip finish-chip active" data-finish="metallic">Metallic Gloss</button>
+              <button class="toggle-chip finish-chip" data-finish="matte">Satin Matte</button>
+              <button class="toggle-chip finish-chip" data-finish="chrome">Pure Chrome</button>
+              <button class="toggle-chip finish-chip" data-finish="wireframe">HUD Wireframe</button>
+            </div>
+          </div>
+
+          <!-- Headlights & Underglow Toggles -->
+          <div class="control-group">
+            <span class="control-group-title">AERO & ILLUMINATION</span>
+            <div class="toggle-buttons">
+              <button id="toggle-headlights-btn" class="toggle-chip active">
+                <span>HEADLIGHTS: ON</span>
+              </button>
+              <button id="toggle-underglow-btn" class="toggle-chip active">
+                <span>UNDERGLOW: ON</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Underglow Color Swatches -->
+          <div class="control-group">
+            <span class="control-group-title">NEON UNDERGLOW TINT</span>
+            <div class="color-swatches">
+              <button class="color-swatch underglow-chip active" data-glow="#00f0ff" style="background: #00f0ff;"></button>
+              <button class="color-swatch underglow-chip" data-glow="#ff4500" style="background: #ff4500;"></button>
+              <button class="color-swatch underglow-chip" data-glow="#ff007f" style="background: #ff007f;"></button>
+              <button class="color-swatch underglow-chip" data-glow="#00ff66" style="background: #00ff66;"></button>
+              <button class="color-swatch underglow-chip" data-glow="#ffffff" style="background: #ffffff;"></button>
+            </div>
+          </div>
+
+          <!-- Bottom Action Buttons: Rev Boost & 360 Orbit -->
+          <div class="action-buttons-row">
+            <button id="rev-boost-btn" class="rev-boost-btn">
+              <i data-lucide="flame"></i>
+              <span>REV ENGINE & NITRO BURST</span>
+            </button>
+
+            <button id="inspect-360-btn" class="inspect-btn">
+              <i data-lucide="rotate-3d"></i>
+              <span>INSPECT 360°</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Telemetry Stats Strip -->
+        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 4px;" class="interactive-target">
+          <div class="liquid-glass" style="padding: 12px 18px; text-align: center;">
+            <div style="font-size: 0.72rem; color: #94a3b8; font-family: 'JetBrains Mono', monospace;">POWERTRAIN</div>
+            <div id="spec-engine" style="font-weight: 700; color: #fff; font-size: 0.92rem; margin-top: 2px;">3.9L Twin-Turbo V8</div>
+          </div>
+          <div class="liquid-glass" style="padding: 12px 18px; text-align: center;">
+            <div style="font-size: 0.72rem; color: #94a3b8; font-family: 'JetBrains Mono', monospace;">HORSEPOWER</div>
+            <div id="spec-power" style="font-weight: 700; color: var(--hw-gold); font-size: 0.92rem; margin-top: 2px;">780 HP</div>
+          </div>
+          <div class="liquid-glass" style="padding: 12px 18px; text-align: center;">
+            <div style="font-size: 0.72rem; color: #94a3b8; font-family: 'JetBrains Mono', monospace;">0-100 KM/H</div>
+            <div id="spec-zero" style="font-weight: 700; color: var(--cyber-cyan); font-size: 0.92rem; margin-top: 2px;">2.5s</div>
+          </div>
+          <div class="liquid-glass" style="padding: 12px 18px; text-align: center;">
+            <div style="font-size: 0.72rem; color: #94a3b8; font-family: 'JetBrains Mono', monospace;">TOP VELOCITY</div>
+            <div id="spec-top" style="font-weight: 700; color: var(--neon-pink); font-size: 0.92rem; margin-top: 2px;">355 KM/H</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. PROJECTS / CREATIONS SECTION -->
+    <section id="projects">
+      <div class="section-header">
+        <span class="section-label">FEATURED WORKS & EXPERIMENTS</span>
+        <h2 class="section-title glass-heading">SPEED & CODE CREATIONS</h2>
+      </div>
+
+      <div class="projects-grid">
+        <!-- Project 1 -->
+        <div class="project-card liquid-glass liquid-glass-border interactive-target interactive-tilt">
+          <div class="project-top">
+            <span class="project-badge">WEBGL // THREE.JS // PHYSICS</span>
+            <h3 class="project-title">Hot Wheels Infinite Loop 3D</h3>
+            <p class="project-desc">
+              A real-time procedural Hot Wheels orange track builder and physics simulator built in Three.js. 
+              Features gravity calculations, banked loops, corkscrews, speed boost pads, and customizable die-cast racers.
+            </p>
+            <div class="project-tags">
+              <span class="project-tag">Three.js</span>
+              <span class="project-tag">GLSL Shaders</span>
+              <span class="project-tag">Cannon.js</span>
+              <span class="project-tag">Procedural Splines</span>
+            </div>
+          </div>
+          <div class="project-footer">
+            <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: var(--hw-gold);">60 FPS OPTIMIZED</span>
+            <a href="https://github.com" target="_blank" class="project-link">
+              <span>EXPLORE CODE</span>
+              <i data-lucide="arrow-up-right"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="project-card liquid-glass liquid-glass-border interactive-target interactive-tilt">
+          <div class="project-top">
+            <span class="project-badge">SYSTEMS // SIMULATION</span>
+            <h3 class="project-title">Apex Telemetry & Engine HUD</h3>
+            <p class="project-desc">
+              Real-time telemetry telemetry dashboard designed for sim-racing titles (Assetto Corsa, F1). 
+              Reads tyre temperatures, suspension travel, throttle mapping, and G-force vectors with ultra low latency.
+            </p>
+            <div class="project-tags">
+              <span class="project-tag">Python</span>
+              <span class="project-tag">WebSockets</span>
+              <span class="project-tag">Canvas API</span>
+              <span class="project-tag">Telemetry Curves</span>
+            </div>
+          </div>
+          <div class="project-footer">
+            <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: var(--cyber-cyan);">&lt;5MS LATENCY</span>
+            <a href="https://github.com" target="_blank" class="project-link">
+              <span>EXPLORE CODE</span>
+              <i data-lucide="arrow-up-right"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Project 3 -->
+        <div class="project-card liquid-glass liquid-glass-border interactive-target interactive-tilt">
+          <div class="project-top">
+            <span class="project-badge">AUDIO // WEB AUDIO API</span>
+            <h3 class="project-title">BeatSync Synthwave Engine</h3>
+            <p class="project-desc">
+              Audio-reactive WebGL visualizer and harmonic synthesizer that converts frequency spectrum data into 
+              pulsing synthwave cityscapes, reactive neon grids, and audio-driven car speedometers.
+            </p>
+            <div class="project-tags">
+              <span class="project-tag">Web Audio API</span>
+              <span class="project-tag">FFT Analyser</span>
+              <span class="project-tag">Three.js</span>
+              <span class="project-tag">Liquid Glass UI</span>
+            </div>
+          </div>
+          <div class="project-footer">
+            <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: var(--neon-pink);">SYNTHETIC SOUND</span>
+            <a href="https://github.com" target="_blank" class="project-link">
+              <span>EXPLORE CODE</span>
+              <i data-lucide="arrow-up-right"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Project 4 -->
+        <div class="project-card liquid-glass liquid-glass-border interactive-target interactive-tilt">
+          <div class="project-top">
+            <span class="project-badge">C++ // GAME ENGINE DEV</span>
+            <h3 class="project-title">Valkyrie 3D Graphics Pipeline</h3>
+            <p class="project-desc">
+              Experimental C++ and OpenGL rendering engine with shadow mapping, deferred lighting, PBR materials, 
+              entity-component architecture, and custom camera controllers.
+            </p>
+            <div class="project-tags">
+              <span class="project-tag">C++20</span>
+              <span class="project-tag">OpenGL 4.5</span>
+              <span class="project-tag">GLM</span>
+              <span class="project-tag">Dear ImGui</span>
+            </div>
+          </div>
+          <div class="project-footer">
+            <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: var(--hw-orange);">NATIVE ENGINE</span>
+            <a href="https://github.com" target="_blank" class="project-link">
+              <span>EXPLORE CODE</span>
+              <i data-lucide="arrow-up-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. SKILLS & ARSENAL SECTION -->
+    <section id="skills">
+      <div class="section-header">
+        <span class="section-label">TECHNICAL COMPETENCY</span>
+        <h2 class="section-title glass-heading">THE TECH ARSENAL</h2>
+      </div>
+
+      <div class="skills-grid">
+        <!-- Category 1 -->
+        <div class="skill-category-card liquid-glass liquid-glass-border interactive-target">
+          <h3 class="category-title">
+            <i data-lucide="code-2" style="color: var(--cyber-cyan);"></i>
+            <span>Languages & Systems</span>
+          </h3>
+          <div class="skills-list">
+            <div class="skill-item">
+              <div class="skill-info"><span>C++ / C</span><span>90%</span></div>
+              <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 90%;"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info"><span>Python</span><span>88%</span></div>
+              <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 88%;"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info"><span>JavaScript / TypeScript</span><span>85%</span></div>
+              <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 85%;"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info"><span>SQL / Database Design</span><span>78%</span></div>
+              <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 78%;"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Category 2 -->
+        <div class="skill-category-card liquid-glass liquid-glass-border interactive-target">
+          <h3 class="category-title">
+            <i data-lucide="box" style="color: var(--hw-orange);"></i>
+            <span>3D Graphics & Web</span>
+          </h3>
+          <div class="skills-list">
+            <div class="skill-item">
+              <div class="skill-info"><span>Three.js / WebGL</span><span>92%</span></div>
+              <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 92%;"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info"><span>HTML5 / Liquid Glass CSS</span><span>95%</span></div>
+              <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 95%;"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info"><span>GLSL Shaders & PBR</span><span>80%</span></div>
+              <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 80%;"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info"><span>Web Audio API</span><span>82%</span></div>
+              <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 82%;"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Category 3 -->
+        <div class="skill-category-card liquid-glass liquid-glass-border interactive-target">
+          <h3 class="category-title">
+            <i data-lucide="cpu" style="color: var(--hw-gold);"></i>
+            <span>CS Fundamentals</span>
+          </h3>
+          <div class="skills-list">
+            <div class="skill-item">
+              <div class="skill-info"><span>Data Structures & Algorithms</span><span>88%</span></div>
+              <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 88%;"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info"><span>Operating Systems & Memory</span><span>84%</span></div>
+              <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 84%;"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info"><span>Git / GitHub Workflows</span><span>90%</span></div>
+              <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 90%;"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info"><span>Linux / Shell Scripting</span><span>82%</span></div>
+              <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 82%;"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. CONTACT / PIT STOP SECTION -->
+    <section id="contact">
+      <div class="section-header">
+        <span class="section-label">TRANSMISSION & COLLABORATION</span>
+        <h2 class="section-title glass-heading">THE PIT STOP</h2>
+      </div>
+
+      <div class="contact-container">
+        <div class="contact-info-card liquid-glass liquid-glass-border interactive-target">
+          <p class="contact-lead">
+            Whether you want to collaborate on 3D graphics, discuss racing telemetry, build games, or talk Hot Wheels casting rarities — let's connect!
+          </p>
+
+          <div class="contact-meta-list">
+            <div class="contact-meta-item">
+              <div class="meta-icon-box"><i data-lucide="graduation-cap"></i></div>
+              <div>
+                <strong style="color: #fff; display: block;">Techno India University</strong>
+                <span>CSE B.Tech Undergraduate (2nd Year)</span>
+              </div>
+            </div>
+
+            <div class="contact-meta-item">
+              <div class="meta-icon-box"><i data-lucide="map-pin"></i></div>
+              <div>
+                <strong style="color: #fff; display: block;">Kolkata, West Bengal</strong>
+                <span>India</span>
+              </div>
+            </div>
+
+            <div class="contact-meta-item">
+              <div class="meta-icon-box"><i data-lucide="mail"></i></div>
+              <div>
+                <strong style="color: #fff; display: block;">Direct Channel</strong>
+                <span>ayushsaha.cse@technoindia.edu</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="social-links">
+            <a href="https://github.com" target="_blank" class="social-pill" title="GitHub">
+              <i data-lucide="github"></i>
+            </a>
+            <a href="https://linkedin.com" target="_blank" class="social-pill" title="LinkedIn">
+              <i data-lucide="linkedin"></i>
+            </a>
+            <a href="https://discord.com" target="_blank" class="social-pill" title="Discord">
+              <i data-lucide="message-square"></i>
+            </a>
+            <a href="https://spotify.com" target="_blank" class="social-pill" title="Spotify">
+              <i data-lucide="headphones"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Interactive Form -->
+        <div class="contact-form-card liquid-glass liquid-glass-border interactive-target">
+          <form id="portfolio-contact-form">
+            <div class="form-group">
+              <label class="form-label">YOUR CALLSIGN / NAME</label>
+              <input type="text" class="form-input" placeholder="e.g. Alex Hunter" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">COMMS FREQUENCY / EMAIL</label>
+              <input type="email" class="form-input" placeholder="name@domain.com" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">TELEMETRY MESSAGE</label>
+              <textarea class="form-textarea" placeholder="Let's build something fast and incredible..." required></textarea>
+            </div>
+
+            <button type="submit" class="btn-primary" style="width: 100%; border: none;">
+              TRANSMIT TELEMETRY
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <p>© 2026 Ayush Saha. Designed with Liquid Glass, WebGL & Three.js. Crafted for Speed & Engineering.</p>
+    </footer>
+
+  </main>
+
+  <!-- Fixed Bottom Live Telemetry HUD -->
+  <aside class="telemetry-hud liquid-glass liquid-glass-border">
+    <div class="hud-item">
+      <span id="hud-speed-val" class="hud-val" style="color: var(--cyber-cyan);">185</span>
+      <span class="hud-unit">KM/H</span>
+    </div>
+
+    <div class="hud-divider"></div>
+
+    <div class="hud-item">
+      <span id="hud-gear-val" class="hud-val hud-gear">5</span>
+      <span class="hud-unit">GEAR</span>
+    </div>
+
+    <div class="hud-divider"></div>
+
+    <div class="hud-item">
+      <span id="hud-rpm-val" class="hud-val" style="color: var(--hw-gold);">6,400</span>
+      <span class="hud-unit">RPM</span>
+    </div>
+
+    <div class="hud-divider"></div>
+
+    <div class="hud-item" style="cursor: pointer;" onclick="document.getElementById('rev-boost-btn')?.click();" title="Click to Boost!">
+      <span class="hud-val" style="font-size: 1.1rem; color: #ff0055;">🔥 BOOST</span>
+      <span class="hud-unit">NITRO</span>
+    </div>
+  </aside>
+
+  <!-- Application Bootstrap -->
+  <script type="module" src="./js/main.js"></script>
+</body>
+</html>
